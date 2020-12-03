@@ -6,10 +6,11 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 16:42:45 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 17:11:01 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 23:16:53 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <unistd.h>
 #include "ft_printf.h"
 
@@ -40,10 +41,10 @@ int			uint_conversions(t_inf inf, va_list val)
 		return (write_int_zero(inf));
 	ret = get_uint_size(n, 10, inf.conversion);
 	if (inf.form_zero && !inf.form_dot)
-		ret += write_zero_flag(inf, ret, n);
+		ret += write_zero_flag(inf, ret, 1);
 	else
-		ret += int_write_preflag(inf, ret, n);
+		ret += int_write_preflag(inf, ret, 1);
 	ft_put_uint_base(n, 10, inf.conversion);
-	ret += int_write_postflag(inf, ret, n);
+	ret += int_write_postflag(inf, ret, 1);
 	return (ret);
 }
