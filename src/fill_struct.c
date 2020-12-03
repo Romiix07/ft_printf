@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:49:25 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 19:55:36 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 22:20:36 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,10 @@ t_inf			get_infos(const char *s, va_list val)
 			inf.form_zero = 1;
 		if (s[i] == '.')
 			inf.form_dot = 1;
-		if ((ft_isdigit(s[i]) && s[i] != '0') || s[i] == '-' || s[i] == '*')
+		if (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '*')
 			inf.form_nb = 1;
-		if ((ft_isdigit(s[i]) || s[i + 1] == '*')
-			&& !is_conversion(s[i + 1]) && (s[i] == '-' || s[i] == '.' ||
-											s[i] == '0'))
+		if ((ft_isdigit(s[i + 1]) || s[i + 1] == '*') &&
+			!is_conversion(s[i + 1]) && (s[i] == '-' || s[i] == '.' || s[i] == '0'))
 			++i;
 		while (s[i] && s[i + 1] && ft_isdigit(s[i]) && ft_isdigit(s[i + 1]))
 			++i;

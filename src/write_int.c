@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 15:09:53 by romain            #+#    #+#             */
-/*   Updated: 2020/12/01 23:41:19 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 22:22:16 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	write_zero_flag(t_inf inf, int nb_size, int n)
 	return (ret);
 }
 
-int	int_write_postflag(t_inf inf, int nsz, int n)
+int	int_write_postflag(t_inf inf, int n_size, int n)
 {
 	int	ret;
 	int	size;
@@ -82,11 +82,12 @@ int	int_write_postflag(t_inf inf, int nsz, int n)
 	ret = 0;
 	if (inf.form_nb)
 	{
-		if (inf.form_dot && inf.prec_dot >= nsz)
-			size = inf.prec_nb + nsz + (inf.prec_dot - nsz);
+		if (inf.form_dot && inf.prec_dot >= n_size)
+			size = inf.prec_nb + n_size + (inf.prec_dot - n_size);
 		else
-			size = inf.prec_nb + nsz;
-		while (size++ < (inf.form_dot && n < 0 && inf.prec_dot >= nsz ? -1 : 0))
+			size = inf.prec_nb + n_size;
+		while (size++ < (inf.form_dot && n < 0 &&
+						inf.prec_dot >= n_size ? -1 : 0))
 			ret += write(1, " ", 1);
 	}
 	return (ret);
