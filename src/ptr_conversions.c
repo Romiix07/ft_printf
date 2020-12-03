@@ -28,8 +28,8 @@ static int	get_ptr_length(unsigned long long n, t_inf inf)
 {
 	int	size;
 
-	size = 2;
-	while (n > 0)
+	size = 3;
+	while (n >= 16)
 	{
 		n /= 16;
 		++size;
