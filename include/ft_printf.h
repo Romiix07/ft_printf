@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:26:36 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 17:10:14 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 17:43:21 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int				ft_putstr_null(t_inf inf, int to_write);
 int				ft_putstr_empty(t_inf inf);
 int				write_int_zero(t_inf inf);
 int				write_zero_flag(t_inf inf, int nb_size, int n);
+int				percent_conversion(t_inf inf);
 
 #endif

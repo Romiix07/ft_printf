@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:52:09 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 17:08:52 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 17:44:07 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static int	select_func(va_list val, t_inf inf)
 {
 	int		i;
 	char	*conversions;
-	int		(*func[9])(t_inf, va_list);
+	int		(*func[8])(t_inf, va_list);
 
 	i = -1;
-	conversions = "cspdiuxX%";
+	conversions = "cspdiuxX";
 	func[0] = &char_conversions;
 	func[1] = &char_conversions;
 	func[2] = &ptr_conversions;
@@ -29,7 +29,8 @@ static int	select_func(va_list val, t_inf inf)
 	func[5] = &uint_conversions;
 	func[6] = &uint_conversions;
 	func[7] = &uint_conversions;
-	func[8] = &char_conversions;
+	if (inf.conversion == '%')
+		return (percent_conversion(inf));
 	while (conversions[++i])
 		if (inf.conversion == conversions[i])
 			return ((*func[i])(inf, val));

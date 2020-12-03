@@ -8,6 +8,7 @@ SRCS		=	src/ft_printf.c	\
 				src/int_conversions.c	\
 				src/uint_conversions.c	\
 				src/ptr_conversions.c	\
+				src/percent_conv_write.c	\
 				src/fill_struct.c	\
 				src/write_uint.c
 
