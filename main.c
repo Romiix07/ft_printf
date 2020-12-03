@@ -18,8 +18,8 @@ int	main(void)
 	int	n1 = 0, n2;
 	char *str = NULL;
 
-	n1 = ft_printf("%05%");
-	n2 = printf("%05%");
+	n1 = ft_printf("%-5%\n");
+	n2 = printf("%-5%\n");
 	printf("n1 = %d, n2 = %d\n", n1, n2);
 	return (0);
 }

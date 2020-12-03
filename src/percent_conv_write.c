@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
 #include "ft_printf.h"
@@ -27,7 +28,7 @@ int	percent_conversion(t_inf inf)
 			ret += write(1, " ", 1);
 	ret += write(1, "%", 1);
 	if (inf.form_nb && inf.prec_nb < 0)
-		while (inf.prec_nb++ < 1)
+		while (inf.prec_nb++ < -1)
 			ret += write(1, " ", 1);
 	return (ret);
 }

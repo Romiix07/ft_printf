@@ -19,6 +19,8 @@ static int	select_func(va_list val, t_inf inf)
 	char	*conversions;
 	int		(*func[8])(t_inf, va_list);
 
+	if (inf.conversion == '%')
+	  return (percent_conversion(inf));
 	i = -1;
 	conversions = "cspdiuxX";
 	func[0] = &char_conversions;
@@ -29,8 +31,6 @@ static int	select_func(va_list val, t_inf inf)
 	func[5] = &uint_conversions;
 	func[6] = &uint_conversions;
 	func[7] = &uint_conversions;
-	if (inf.conversion == '%')
-		return (percent_conversion(inf));
 	while (conversions[++i])
 		if (inf.conversion == conversions[i])
 			return ((*func[i])(inf, val));
