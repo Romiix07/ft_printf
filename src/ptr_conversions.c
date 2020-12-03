@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:49:40 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 19:13:18 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 19:19:36 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int			ptr_conversions(t_inf inf, va_list val)
 			ret += write(1, " ", 1);
 	ret += write(1, "0x", 2);
 	ret += ft_put_ptr(uptr, inf.form_dot ? inf.prec_dot - 2 : 99);
-	/*	if (inf.from_nb && inf.prec_nb > 0)
-		while (inf.prec_nb-- > lenght)
-		ret += write(1, " ", 1);*/
+	if (inf.form_nb && inf.prec_nb < 0)
+		while (inf.prec_nb++ < length * -1)
+			ret += write(1, " ", 1);
 	return (ret);
 }
