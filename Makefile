@@ -1,14 +1,15 @@
 SRCS		=	src/ft_printf.c	\
-			src/ft_atoi.c	\
-			src/ft_strlen.c	\
-			src/ft_isdigit.c	\
-			src/write_char.c	\
-			src/write_int.c	\
-			src/char_conversions.c	\
-			src/int_conversions.c	\
-			src/ptr_conversions.c	\
-			src/fill_struct.c	\
-			src/write_uint.c
+				src/ft_atoi.c	\
+				src/ft_strlen.c	\
+				src/ft_isdigit.c	\
+				src/write_char.c	\
+				src/write_int.c	\
+				src/char_conversions.c	\
+				src/int_conversions.c	\
+				src/uint_conversions.c	\
+				src/ptr_conversions.c	\
+				src/fill_struct.c	\
+				src/write_uint.c
 
 INCLUDES	=	./include
 

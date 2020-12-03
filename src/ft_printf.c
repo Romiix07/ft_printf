@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:52:09 by romain            #+#    #+#             */
-/*   Updated: 2020/11/30 23:11:52 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 17:08:52 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	select_func(va_list val, t_inf inf)
 	func[2] = &ptr_conversions;
 	func[3] = &int_conversions;
 	func[4] = &int_conversions;
-	func[5] = &int_conversions;
-	func[6] = &int_conversions;
-	func[7] = &int_conversions;
+	func[5] = &uint_conversions;
+	func[6] = &uint_conversions;
+	func[7] = &uint_conversions;
 	func[8] = &char_conversions;
 	while (conversions[++i])
 		if (inf.conversion == conversions[i])

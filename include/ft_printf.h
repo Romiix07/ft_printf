@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:26:36 by romain            #+#    #+#             */
-/*   Updated: 2020/12/01 20:46:36 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 17:10:14 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int				ft_printf(const char *s, ...);
 t_inf			get_infos(const char *s, va_list val);
 int				is_conversion(char c);
 int				int_conversions(t_inf inf, va_list val);
+int				uint_conversions(t_inf inf, va_list val);
 int				ft_putchar_ret(char c);
 int				ft_putstr_ret(t_inf inf, char *s, int to_write);
 int				char_conversions(t_inf inf, va_list val);

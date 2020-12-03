@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 16:42:45 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 16:43:09 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 17:11:01 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,22 @@ static int	get_uint_size(unsigned int n, unsigned int base, char conv)
 		++size;
 	}
 	return (size);
+}
+
+int			uint_conversions(t_inf inf, va_list val)
+{
+	int					ret;
+	unsigned int		n;
+
+	n = (unsigned int)va_arg(val, unsigned int);
+	if (n == 0)
+		return (write_int_zero(inf));
+	ret = get_uint_size(n, 10, inf.conversion);
+	if (inf.form_zero && !inf.form_dot)
+		ret += write_zero_flag(inf, ret, n);
+	else
+		ret += int_write_preflag(inf, ret, n);
+	ft_put_uint_base(n, 10, inf.conversion);
+	ret += int_write_postflag(inf, ret, n);
+	return (ret);
 }
