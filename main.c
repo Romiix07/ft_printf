@@ -18,13 +18,8 @@ int	main(void)
 	int	n1 = 0, n2;
 	char *str = "shdsaoihd";
 
-<<<<<<< Updated upstream
-	n1 = ft_printf("%-5%\n");
-	n2 = printf("%-5%\n");
-=======
-	n1 = ft_printf("%.*p\n", -3, str);
-	n2 = printf("%.*p\n", -3, str);
->>>>>>> Stashed changes
+	n1 = ft_printf("%5p\n", 0);
+	n2 = printf("%5p\n", 0);
 	printf("n1 = %d, n2 = %d\n", n1, n2);
 	return (0);
 }
