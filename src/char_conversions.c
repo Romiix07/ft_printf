@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 22:49:16 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 16:39:33 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 19:24:49 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	char_conversions(t_inf inf, va_list val)
 	char			*s;
 
 	ret = 0;
-	if (inf.conversion == 'c' || inf.conversion == '%')
+	if (inf.conversion == 'c')
 		ret += write_char(inf, val);
 	else if (inf.conversion == 's')
 	{

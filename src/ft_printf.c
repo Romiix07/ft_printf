@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:52:09 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 17:44:07 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 19:44:14 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	select_func(va_list val, t_inf inf)
 	int		(*func[8])(t_inf, va_list);
 
 	if (inf.conversion == '%')
-	  return (percent_conversion(inf));
+		return (percent_conversion(inf));
 	i = -1;
 	conversions = "cspdiuxX";
 	func[0] = &char_conversions;

@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:49:40 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 19:19:36 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 19:44:02 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ static int	ft_put_ptr(unsigned long long n, int counter)
 
 	hex = "0123456789abcdef";
 	if (n >= 16 && counter > 0)
+	{
 		return (ft_put_ptr(n / 16, --counter) +
 				ft_putchar_ret(hex[n % 16]));
+	}
 	return (ft_putchar_ret(hex[n % 16]));
 }
 

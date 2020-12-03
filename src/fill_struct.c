@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:49:25 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 16:41:41 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/03 19:42:58 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_inf	fill_inf(t_inf inf, const char *s, va_list v)
 	}
 	if (*s == '0')
 		inf.prec_zero = *(s + 1) == '*' ? va_arg(v, int) : ft_atoi(s + 1);
-	if ((*s >= '1' && *s <= '9') || *s == '*' || *s == '-')
+	if ((*s >= '1' && *s <= '9') || *s == '*' || (*s == '-' && *(s + 1) != '*'))
 		inf.prec_nb = *s == '*' ? va_arg(v, int) : ft_atoi(s);
 	if (*s == '.')
 	{
