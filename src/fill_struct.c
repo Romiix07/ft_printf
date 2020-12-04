@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:49:25 by romain            #+#    #+#             */
-/*   Updated: 2020/12/04 02:07:14 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/04 02:13:06 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,34 +110,3 @@ t_inf			get_infos(const char *s, va_list val)
 	inf = check_inf(inf, s[i]);
 	return (inf);
 }
-
-/*t_inf			get_infos(const char *s, va_list val)
-{
-	t_inf		inf;
-	int			i;
-
-	inf = reset_infos();
-	i = -1;
-	while (s[++i] && !is_conversion(s[i]))
-	{
-	  //	  printf("s == %c\n", s[i]);
-		inf = fill_inf(inf, &s[i], val);
-		if (s[i] == '0')
-			inf.form_zero = 1;
-		if (s[i] == '.')
-			inf.form_dot = 1;
-		if (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '*')
-			inf.form_nb = 1;
-		if ((//ft_isdigit(s[i + 1])//(s[i + 1] > '0' && s[i + 1] < ':') || s[i + 1] == '*') &&
-			!is_conversion(s[i + 1]) && (s[i] == '-' || s[i] == '.'
-						     || s[i] == '0'))
-			++i;
-		if (s[i] != '0' && s[i + 1] != '\0')
-		  while (s[i] && s[i + 1] && ft_isdigit(s[i]) && ft_isdigit(s[i + 1]))
-		    ++i;
-	}
-	inf.conversion = s[i];
-	inf = check_inf(inf);
-	return (inf);
-}
-*/

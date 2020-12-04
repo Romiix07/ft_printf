@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 15:09:53 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 22:22:16 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/04 02:37:07 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	ft_put_lint(int n, t_inf inf)
 {
-	if (n == -2147483648 && inf.form_dot)
+	if (n == -2147483648 && (inf.form_dot || inf.form_zero))
 		return (write(1, "2147483648", 10));
 	else if (n == -2147483648)
 		return (write(1, "-2147483648", 11));
