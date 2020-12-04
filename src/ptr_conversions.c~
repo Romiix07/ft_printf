@@ -54,6 +54,7 @@ int			ptr_conversions(t_inf inf, va_list val)
 	ptr = va_arg(val, void *);
 	uptr = (unsigned long long)ptr;
 	length = get_ptr_length(uptr, inf);
+	printf("length = %d, prec = %d\n", length, inf.prec_nb);
 	if (inf.form_nb && inf.prec_nb > 0)
 		while (inf.prec_nb-- > length)
 			ret += write(1, " ", 1);

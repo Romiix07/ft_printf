@@ -43,7 +43,7 @@ int	ft_putstr_null(t_inf inf, int to_write)
 	ret = 0;
 	if (inf.prec_nb >= 0)
 	{
-	  if (inf.form_nb && inf.prec_nb)
+		if (inf.form_nb)
 			while (to_write-- > 0)
 				ret += write(1, " ", 1);
 		while (*str && (inf.form_dot ? inf.prec_dot-- > 0 : *str))
@@ -53,7 +53,7 @@ int	ft_putstr_null(t_inf inf, int to_write)
 	{
 		while (*str && (inf.form_dot ? inf.prec_dot-- > 0 : *str))
 			ret += write(1, str++, 1);
-		if (inf.form_nb && inf.prec_nb)
+		if (inf.form_nb)
 			while (to_write++ < 0)
 				ret += write(1, " ", 1);
 	}
