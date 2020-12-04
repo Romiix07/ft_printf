@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 16:59:20 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 19:39:14 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/04 02:05:22 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_putstr_null(t_inf inf, int to_write)
 	ret = 0;
 	if (inf.prec_nb >= 0)
 	{
-	  if (inf.form_nb && inf.prec_nb)
+		if (inf.form_nb && inf.prec_nb)
 			while (to_write-- > 0)
 				ret += write(1, " ", 1);
 		while (*str && (inf.form_dot ? inf.prec_dot-- > 0 : *str))

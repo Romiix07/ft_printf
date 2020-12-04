@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:49:25 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 22:35:13 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/04 02:07:14 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_inf	fill_inf(t_inf inf, const char *s, va_list v)
 		inf.prec_nb *= inf.prec_nb > 0 ? -1 : 1;
 	}
 	if (*s == '0')
-	    inf.prec_zero = *(s + 1) == '*' ? va_arg(v, int) : ft_atoi(s + 1);
+		inf.prec_zero = *(s + 1) == '*' ? va_arg(v, int) : ft_atoi(s + 1);
 	if ((*s >= '1' && *s <= '9') || *s == '*' || (*s == '-' && *(s + 1) != '*'))
 		inf.prec_nb = *s == '*' ? va_arg(v, int) : ft_atoi(s);
 	if (*s == '.')
@@ -62,8 +62,9 @@ static t_inf	reset_infos(void)
 	return (inf);
 }
 
-t_inf			check_inf(t_inf inf)
+static t_inf	check_inf(t_inf inf, char c)
 {
+	inf.conversion = c;
 	if (inf.form_dot && inf.prec_dot < 0)
 		inf.form_dot = 0;
 	if (inf.form_dot && inf.form_zero && inf.conversion != '%')
@@ -90,6 +91,35 @@ t_inf			get_infos(const char *s, va_list val)
 	i = -1;
 	while (s[++i] && !is_conversion(s[i]))
 	{
+		inf = fill_inf(inf, &s[i], val);
+		if (s[i] == '0')
+			inf.form_zero = 1;
+		else if (s[i] == '.')
+			inf.form_dot = 1;
+		else if (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '*')
+			inf.form_nb = 1;
+		if (s[i] == '0')
+			i = zero_incr(s, i);
+		else if (s[i] == '.')
+			i = dot_incr(s, i);
+		else if (s[i] == '-')
+			i = minus_incr(s, i);
+		else if (ft_isdigit(s[i]))
+			i = nb_incr(s, i);
+	}
+	inf = check_inf(inf, s[i]);
+	return (inf);
+}
+
+/*t_inf			get_infos(const char *s, va_list val)
+{
+	t_inf		inf;
+	int			i;
+
+	inf = reset_infos();
+	i = -1;
+	while (s[++i] && !is_conversion(s[i]))
+	{
 	  //	  printf("s == %c\n", s[i]);
 		inf = fill_inf(inf, &s[i], val);
 		if (s[i] == '0')
@@ -98,7 +128,7 @@ t_inf			get_infos(const char *s, va_list val)
 			inf.form_dot = 1;
 		if (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '*')
 			inf.form_nb = 1;
-		if ((/*ft_isdigit(s[i + 1])*/(s[i + 1] > '0' && s[i + 1] < ':') || s[i + 1] == '*') &&
+		if ((//ft_isdigit(s[i + 1])//(s[i + 1] > '0' && s[i + 1] < ':') || s[i + 1] == '*') &&
 			!is_conversion(s[i + 1]) && (s[i] == '-' || s[i] == '.'
 						     || s[i] == '0'))
 			++i;
@@ -110,3 +140,4 @@ t_inf			get_infos(const char *s, va_list val)
 	inf = check_inf(inf);
 	return (inf);
 }
+*/

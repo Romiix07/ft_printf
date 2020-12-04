@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:49:40 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 23:43:52 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/04 02:05:02 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	ft_put_ptr(unsigned long long n)
 
 static int	get_ptr_length(unsigned long long n, t_inf inf)
 {
-	int	size;
-	unsigned long long nb;
+	int					size;
+	unsigned long long	nb;
 
 	nb = n;
 	size = 3;
@@ -37,9 +37,9 @@ static int	get_ptr_length(unsigned long long n, t_inf inf)
 		++size;
 	}
 	if (n == 0 && inf.form_dot && !inf.prec_dot)
-	  --size;
+		--size;
 	else if (inf.form_dot && size > inf.prec_dot)
-	  return (inf.prec_dot);
+		return (inf.prec_dot);
 	return (size);
 }
 
@@ -62,7 +62,7 @@ int			ptr_conversions(t_inf inf, va_list val)
 		(inf.form_dot && uptr))
 		ret += ft_put_ptr(uptr);
 	if (inf.form_nb && inf.prec_nb < 0)
-	  while (inf.prec_nb++ < length * -1)
+		while (inf.prec_nb++ < length * -1)
 			ret += write(1, " ", 1);
 	return (ret);
 }
