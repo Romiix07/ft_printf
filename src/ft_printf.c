@@ -6,14 +6,23 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:52:09 by romain            #+#    #+#             */
-/*   Updated: 2020/12/03 19:44:14 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/07 14:07:44 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
 
-static int	select_func(va_list val, t_inf inf)
+static int	n_conversion(va_list val, int printed_chars)
+{
+	int	*n;
+
+	if ((n = va_arg(val, int *)))
+		n = &printed_chars;
+	return (0);
+}
+
+static int	select_func(va_list val, t_inf inf, int printed_chars)
 {
 	int		i;
 	char	*conversions;
@@ -21,6 +30,8 @@ static int	select_func(va_list val, t_inf inf)
 
 	if (inf.conversion == '%')
 		return (percent_conversion(inf));
+	if (inf.conversion == 'n')
+		return (n_conversion(val, printed_chars));
 	i = -1;
 	conversions = "cspdiuxX";
 	func[0] = &char_conversions;
@@ -51,7 +62,7 @@ static int	print_all(const char *s, va_list val)
 		{
 			++i;
 			infos = get_infos(&s[i], val);
-			printed_chars += select_func(val, infos);
+			printed_chars += select_func(val, infos, printed_chars);
 			while (s[i] && !is_conversion(s[i]))
 				++i;
 		}

@@ -6,11 +6,10 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:49:25 by romain            #+#    #+#             */
-/*   Updated: 2020/12/04 02:13:06 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/07 22:05:39 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdarg.h>
 #include "ft_printf.h"
 
@@ -20,7 +19,7 @@ int				is_conversion(char c)
 	char	*conversions;
 
 	i = -1;
-	conversions = "cspdiuxX%";
+	conversions = "cspdiuxX%n";
 	while (conversions[++i])
 		if (c == conversions[i])
 			return (1);

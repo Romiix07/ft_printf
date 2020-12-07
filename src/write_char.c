@@ -6,11 +6,10 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 16:59:20 by romain            #+#    #+#             */
-/*   Updated: 2020/12/04 02:05:22 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/04 03:27:54 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 #include "ft_printf.h"
 
