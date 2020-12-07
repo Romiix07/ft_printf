@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdarg.h>
 #include "ft_printf.h"
 
@@ -28,16 +29,17 @@ int				is_conversion(char c)
 
 static t_inf	fill_inf(t_inf inf, const char *s, va_list v)
 {
-	if (*s == '-' && *(s + 1) == '*')
+  if (*s == '-' && (*(s + 1) == '*' ||
+		    (*(s + 1) == '0' && *(s + 2) == '*')))
 	{
 		inf.prec_nb = va_arg(v, int);
 		inf.prec_nb *= inf.prec_nb > 0 ? -1 : 1;
 	}
-	if (*s == '0')
-		inf.prec_zero = *(s + 1) == '*' ? va_arg(v, int) : ft_atoi(s + 1);
-	if ((*s >= '1' && *s <= '9') || *s == '*' || (*s == '-' && *(s + 1) != '*'))
+  else if (*s == '0')
+		inf.prec_zero = *(s + 1) == '*' ? va_arg(v, int) : ft_atoi(s);
+  else if ((*s >= '1' && *s <= '9') || *s == '*' || *s == '-')
 		inf.prec_nb = *s == '*' ? va_arg(v, int) : ft_atoi(s);
-	if (*s == '.')
+  else if (*s == '.')
 	{
 		if (ft_isdigit(*(s + 1)))
 			inf.prec_dot = ft_atoi(s + 1);

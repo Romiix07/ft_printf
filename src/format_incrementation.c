@@ -25,7 +25,9 @@ int	dot_incr(const char *s, int i)
 
 int	minus_incr(const char *s, int i)
 {
-	if (s[i + 1] == '*')
+  if (s[i + 1] == '0' && s[i + 2] == '*')
+    i += 2;
+	else if (s[i + 1] == '*')
 		++i;
 	else if (ft_isdigit(s[i + 1]))
 		while (ft_isdigit(s[i + 1]))
