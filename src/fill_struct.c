@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:49:25 by romain            #+#    #+#             */
-/*   Updated: 2020/12/07 23:05:34 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/08 16:08:21 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static t_inf	reset_infos(void)
 	inf.form_nb = 0;
 	inf.form_dot = 0;
 	inf.form_zero = 0;
+	inf.form_hash = 0;
 	return (inf);
 }
 
@@ -93,20 +94,16 @@ t_inf			get_infos(const char *s, va_list val)
 	while (s[++i] && !is_conversion(s[i]))
 	{
 		inf = fill_inf(inf, &s[i], val);
+		if (s[i] == '#')
+			inf.form_hash = 1;
 		if (s[i] == '0')
-			inf.form_zero = 1;
+			i = zero_incr(s, i, &inf);
 		else if (s[i] == '.')
-			inf.form_dot = 1;
-		else if (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '*')
-			inf.form_nb = 1;
-		if (s[i] == '0')
-			i = zero_incr(s, i);
-		else if (s[i] == '.')
-			i = dot_incr(s, i);
+			i = dot_incr(s, i, &inf);
 		else if (s[i] == '-')
-			i = minus_incr(s, i);
-		else if (ft_isdigit(s[i]))
-			i = nb_incr(s, i);
+			i = minus_incr(s, i, &inf);
+		else if (ft_isdigit(s[i]) || s[i] == '*')
+			i = nb_incr(s, i, &inf);
 	}
 	inf = check_inf(inf, s[i]);
 	return (inf);

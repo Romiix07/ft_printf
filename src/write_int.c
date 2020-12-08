@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 15:09:53 by romain            #+#    #+#             */
-/*   Updated: 2020/12/07 22:05:24 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/08 16:08:38 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,22 @@ int	int_write_preflag(t_inf inf, int sizn, int n)
 	int	ret;
 	int	size;
 
-	ret = 0;
-	if (inf.form_nb)
+	if (!(ret = 0) && inf.form_nb)
 	{
 		if (inf.form_dot && inf.prec_dot >= sizn)
-			size = inf.prec_nb - sizn - (inf.prec_dot - sizn);
+			size = inf.prec_nb - sizn - (inf.prec_dot - sizn) -
+				(inf.form_hash && inf.form_dot ? 2 : 0);
 		else
-			size = inf.prec_nb - sizn;
+			size = inf.prec_nb - sizn - (inf.form_hash && inf.form_dot ? 2 : 0);
 		while (size-- > (inf.form_dot && n < 0 && inf.prec_dot >= sizn ? 1 : 0))
 			ret += write(1, " ", 1);
 	}
+	ret += write_hash(inf);
 	if (inf.form_dot)
 	{
-		size = inf.prec_dot - sizn;
+		size = inf.prec_dot - sizn + (inf.form_hash ? 2 : 0);
 		if (n < 0)
-		{
-			write(1, "-", 1);
-			++size;
-		}
+			size += write(1, "-", 1);
 		while (size-- > 0)
 			ret += write(1, "0", 1);
 	}
@@ -64,10 +62,16 @@ int	write_zero_flag(t_inf inf, int nb_size, int n)
 	int	ret;
 	int	size;
 
+	ret = 0;
+	size = 0;
+	if ((inf.conversion == 'x' || inf.conversion == 'X') && inf.form_hash)
+	{
+		ret += inf.conversion == 'x' ? write(1, "0x", 2) : write(1, "0X", 2);
+		size = -2;
+	}
 	if (n < 0)
 		write(1, "-", 1);
-	ret = 0;
-	size = inf.prec_zero - nb_size;
+	size += inf.prec_zero - nb_size;
 	while (size-- > 0)
 		ret += write(1, "0", 1);
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:26:36 by romain            #+#    #+#             */
-/*   Updated: 2020/12/04 01:59:52 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/08 15:27:03 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_arginfos {
 	int		form_dot;
 	int		form_nb;
 	int		form_zero;
+	int		form_hash;
 }				t_inf;
 
 int				ft_printf(const char *s, ...);
@@ -46,9 +47,10 @@ int				ft_putstr_empty(t_inf inf);
 int				write_int_zero(t_inf inf);
 int				write_zero_flag(t_inf inf, int nb_size, int n);
 int				percent_conversion(t_inf inf);
-int				nb_incr(const char *s, int i);
-int				dot_incr(const char *s, int i);
-int				minus_incr(const char *s, int i);
-int				zero_incr(const char *s, int i);
+int				nb_incr(const char *s, int i, t_inf *inf);
+int				dot_incr(const char *s, int i, t_inf *inf);
+int				minus_incr(const char *s, int i, t_inf *inf);
+int				zero_incr(const char *s, int i, t_inf *inf);
+int				write_hash(t_inf inf);
 
 #endif

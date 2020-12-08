@@ -6,7 +6,7 @@
 /*   By: romain <rmouduri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 16:42:45 by romain            #+#    #+#             */
-/*   Updated: 2020/12/04 03:27:25 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/08 16:03:37 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int			uint_conversions(t_inf inf, va_list val)
 	if (inf.form_zero && !inf.form_dot)
 		ret += write_zero_flag(inf, ret, 1);
 	else
-		ret += int_write_preflag(inf, ret, 1);
+		ret += int_write_preflag(inf, ret + (inf.form_hash ?
+										2 : 0), 1);
 	ft_put_uint_base(n, 10, inf.conversion);
 	ret += int_write_postflag(inf, ret, 1);
 	return (ret);
